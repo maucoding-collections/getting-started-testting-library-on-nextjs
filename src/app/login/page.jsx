@@ -31,7 +31,6 @@ const LoginPage = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(username, password);
     if (username === "password" && password === "password") {
       setResponse(RESPONSE.SUCCESS);
       setTimeout(() => {
@@ -65,12 +64,13 @@ const LoginPage = () => {
             component="h1"
             sx={{ paddingBottom: "15px", textAlign: "center" }}
           >
-            Login
+            Login Page
           </Typography>
           <Divider sx={{ marginBottom: "20px" }} />
           <FormGroup sx={{ marginBottom: "20px" }}>
-            <FormLabel>Username</FormLabel>
+            <FormLabel htmlFor="username">Username</FormLabel>
             <Input
+              id="username"
               type="text"
               placeholder="Type username here"
               value={username}
@@ -82,8 +82,9 @@ const LoginPage = () => {
           </FormGroup>
 
           <FormGroup sx={{ marginBottom: "30px" }}>
-            <FormLabel>Password</FormLabel>
+            <FormLabel htmlFor="password">Password</FormLabel>
             <Input
+              id="password"
               type="password"
               placeholder="Type password here"
               onChange={(e) => {
@@ -107,6 +108,7 @@ const LoginPage = () => {
 
           <Box sx={{ display: "block", margin: "10px", textAlign: "center" }}>
             <Button
+              data-testid="button"
               disabled={response.status === RESPONSE.SUCCESS.status}
               variant="contained"
               type="submit"
